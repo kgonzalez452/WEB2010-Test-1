@@ -10,10 +10,8 @@ const colors = [
     "rgb(0, 127, 255)",
   ]
 
- //class
   class Squares {
     constructor (boxes, colors) {
-      // constructor assigns an event listener for each box
       this.addClickHandler(boxes, colors);
     }
 
@@ -21,17 +19,18 @@ const colors = [
       console.log("Runnig function changeNumber");
       for(var k = i; k >= 0; k--) {
         const j = parseInt(boxes[k].innerText) + 1;
-        boxes[k].innerText = (j > 9)? 1 : j;
+        boxes[k].innerText = (j > 12)? 1 : j;
       }
     }
 
    changeColor (i, boxes, colors) {
       console.log("Runnig function changeColor");
-      for(var k = i; k >= 0; k--) {
+      for(var k = i; k >= 1; k--) {
         let style = window.getComputedStyle(boxes[k]);
         let index = colors.indexOf(style.backgroundColor);
-        boxes[k].style.backgroundColor = (index > 7)? colors[0] : colors[index + 1];
+        boxes[k].style.backgroundColor = (index > 1)? colors[0] : colors[index + 1];
         console.log(style.backgroundColor, index);
+        
       }
     }
 
@@ -48,7 +47,6 @@ const colors = [
   const boxes = document.querySelectorAll(".col");
   const squares = new Squares(boxes, colors);
 
- //  boxes with fixed values
   boxes.forEach((el, i) => {
     el.innerText = i + 1;
     el.style.backgroundColor = colors[i];
